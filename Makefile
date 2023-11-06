@@ -96,11 +96,14 @@ fmt:
 	@goimports -w -local github.com/oasisprotocol/nexus .
 
 # Lint code, commits and documentation.
-lint-targets := lint-go lint-go-mod-tidy
+lint-targets := lint-go lint-go-mod-tidy lint-changelog
 
 lint-go: codegen-go
 	@$(ECHO) "$(CYAN)*** Running Go linters...$(OFF)"
 	@env -u GOPATH golangci-lint run
+
+lint-changelog:
+	@$(CHECK_CHANGELOG_FRAGMENTS)
 
 lint-go-mod-tidy:
 	@$(ECHO) "$(CYAN)*** Checking go mod tidy...$(OFF)"
@@ -150,6 +153,18 @@ shutdown-postgres:
 release-build: codegen-go
 	@goreleaser release --rm-dist
 
+# Private target for assembling the Change Log.
+# NOTE: It should not be invoked directly.
+changelog:
+	@if [ -z "$(APP_VERSION)" ]; then \
+		echo "Please provide a version number using 'make changelog APP_VERSION=<your_version>'"; \
+		exit 1; \
+	fi
+	@$(ECHO) "$(CYAN)*** Generating Change Log for version $(APP_VERSION)...$(OFF)"
+	@$(BUILD_CHANGELOG)
+	@$(ECHO) "Next, review the staged changes, commit them and make a pull request."
+	@$(WARN_BREAKING_CHANGES)
+
 # List of targets that are not actual files.
 .PHONY: \
 	all build \
@@ -163,6 +178,7 @@ release-build: codegen-go
 	clean \
 	test \
 	fmt \
+	changelog \
 	$(lint-targets) lint \
 	$(docs-targets) docs \
 	run
