@@ -1,3 +1,5 @@
+ci-lint should fail
+
 # Oasis Nexus
 
 [![ci-lint](https://github.com/oasisprotocol/nexus/actions/workflows/ci-lint.yaml/badge.svg)](https://github.com/oasisprotocol/nexus/actions/workflows/ci-lint.yaml)
@@ -20,6 +22,7 @@ to the `docker/node/etc` directory. You will need this to run the Oasis Node con
 **Build**
 
 From the repository root, you can run:
+
 ```sh
 $ make docker
 ```
@@ -27,6 +30,7 @@ $ make docker
 **Run**
 
 From the repository root, you can run:
+
 ```sh
 $ make start-docker
 ```
@@ -36,6 +40,7 @@ The analyzer will run DB migrations on start (i.e. create empty tables) based on
 **Query**
 
 Now you can query the Oasis Nexus API
+
 ```sh
 $ curl -X GET http://0.0.0.0:8008/v1
 ```
@@ -61,10 +66,13 @@ if you are a member of the team, ask around to use it and save time.
 You will need to run a local [PostgreSQL DB](https://www.postgresql.org/).
 
 For example, you can start a local [Docker](https://hub.docker.com/_/postgres) instance of Postgres with:
+
 ```
 make postgres
 ```
+
 and later browse the DB with
+
 ```
 make psql
 ```
@@ -76,6 +84,7 @@ This will start the analyzers and the HTTP server, but you can start each of the
 See `./nexus --help` for more details.
 
 Once Nexus has started, you can query the Oasis Nexus API
+
 ```sh
 $ curl -X GET http://localhost:8008/v1
 ```
