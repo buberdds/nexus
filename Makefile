@@ -199,11 +199,11 @@ fetch-git:
 	@git fetch $(GIT_ORIGIN_REMOTE) --tags
 
 # Used when RELEASE_VERSION is not set and until we have versioning tool in repo.
-NEXT_PATCH_VERSION := $(shell git tag --list | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -n1 | awk 'BEGIN{FS=OFS="."} {$$NF = $$NF + 1; print}')
+NEXT_PATCH_VERSION := $(shell echo $(GIT_VERSION) | awk 'BEGIN{FS=OFS="."} {$$NF = $$NF + 1; print}')
 # Conditionally assign RELEASE_VERSION if it is not already set.
-RELEASE_VERSION ?= $(subst v,,$(NEXT_PATCH_VERSION))
+RELEASE_VERSION ?= $(NEXT_PATCH_VERSION)
 # Git tag of the next release.
-RELEASE_TAG := $(NEXT_PATCH_VERSION)
+RELEASE_TAG := v$(RELEASE_VERSION)
 
 
 # Tag the next release.
