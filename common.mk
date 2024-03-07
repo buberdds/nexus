@@ -140,9 +140,9 @@ endef
 # Helper that builds the Change Log.
 define BUILD_CHANGELOG =
 	if [[ $(ASSUME_YES) != 1 ]]; then \
-		towncrier build --version $(VERSION); \
+		towncrier build --version $(APP_VERSION); \
 	else \
-		towncrier build --version $(VERSION) --yes; \
+		towncrier build --version $(APP_VERSION) --yes; \
 	fi
 endef
 
@@ -200,6 +200,15 @@ define ENSURE_VALID_RELEASE_BRANCH_NAME =
 		exit 1; \
 	fi
 endef
+
+# Helper that calculates the next patch version number
+define CALCULATE_NEXT_PATCH_VERSION
+	LATEST_VERSION=$$(git tag --list | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -n1); \
+	NEXT_VERSION=$$(echo "$$LATEST_VERSION" | awk 'BEGIN{FS=OFS="."} {$$NF = $$NF + 1; print}'); \
+	$(ECHO) "Latest published version is $(RED)$$LATEST_VERSION$(OFF). You are about to publish $(CYAN)$$NEXT_VERSION$(OFF)."; \
+	$(ECHO)  "If this is not what you want, re-run this command with VERSION=..."
+endef
+
 
 define newline
 
