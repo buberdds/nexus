@@ -12,6 +12,27 @@ The format is inspired by [Keep a Changelog].
 
 <!-- TOWNCRIER -->
 
+## 0.2.11 (2024-03-18)
+
+### Bug Fixes and Improvements
+
+- analyzer/consensus: add all known consensus tx body types; add serde helpers
+  ([#661](https://github.com/oasisprotocol/nexus/issues/661))
+
+### Internal Changes
+
+- Fast CI on "assemble release" PRs
+  ([#660](https://github.com/oasisprotocol/nexus/issues/660))
+
+  The special PRs that just assemble the changelog fragments to prepare
+  a release no longer need to undergo full CI, allowing us to cut
+  releases quickly if needed.
+
+- Use [Punch] tool for tracking and bumping project's version
+  ([#668](https://github.com/oasisprotocol/nexus/issues/668))
+
+  [Punch]: https://github.com/lgiordani/punch
+
 ## 0.2.10 (2024-03-12)
 
 Highlights of this release include:
