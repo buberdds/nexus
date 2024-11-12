@@ -38,5 +38,40 @@
         "Name": "Faucet Address",
         "Address": "oasis1qzna6nq9kuktjmxx2s84z38eysqyts84jc9lgdg2",
         "Description": "This account contains TEST tokens distributed by the faucet."
+    },
+    {
+        "Name": "YUZUToken",
+        "Address": "oasis1qzat2v7gd3ku5y3wsg3yvm3yuhsqcthexcwznrmp",
+        "Description": "ERC20"
+    },
+    {
+        "Name": "Wrapped ROSE",
+        "Address": "oasis1qqww9t2v6xwj80ze3s2upumr5zvp3t8xwqq5vfs9",
+        "Description": "ERC20"
+    },
+    {
+        "Name": "MockToken",
+        "Address": "oasis1qprzyv5le8l03pte86fxcftju6y3v5lyucw5kh3p",
+        "Description": "ERC721"
+    },
+    {
+        "Name": "usdt",
+        "Address": "oasis1qzl459cf8eux7ynerzwfw474c5t9p5rrjsu7m986",
+        "Description": "ERC20"
+    },
+    {
+        "Name": "Alberto Rivera Trading",
+        "Address": "oasis1qprmqva3svjg8rf8w2pflzwal5m453kc7qyywh6s",
+        "Description": "ERC20"
+    },
+    {
+        "Name": "YuzuSwap LP Token",
+        "Address": "oasis1qqa8auqmn6xw846mpd7la3ugyypza6v3wudk7em5",
+        "Description": "ERC20"
+    },
+    {
+        "Name": "YuzuSwap LP Token",
+        "Address": "oasis1qqup6w8ldkzfq0ld3s4v8quvyqpjrhhe7slw7q7m",
+        "Description": "ERC20"
     }
 ]
